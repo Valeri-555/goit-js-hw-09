@@ -64,20 +64,21 @@ const images = [
     },
   ];
 
- 
+  import SimpleLightbox from "simplelightbox";
+  import "simplelightbox/dist/simple-lightbox.min.css";
   
   const galleryList = document.querySelector(".gallery");
 
-  galleryList.style.display = "grid";
+  // galleryList.style.display = "grid";
 
   galleryList.insertAdjacentHTML("beforeend", createMarkup(images));
-  galleryList.addEventListener("click", handleClick);
-
-  import SimpleLightbox from "simplelightbox";
-  import "simplelightbox/dist/simple-lightbox.min.css";
+  galleryList.addEventListener("click",  function(event) {
+    event.preventDefault();
+  });
 
 
 function createMarkup(arr) {
+
     return arr.map(({ preview, original, description }) =>
        `<li class="gallery__item">
    <a class="gallery__link" href="${original}">
@@ -90,19 +91,11 @@ function createMarkup(arr) {
 </li>`
     ).join("");
 };
-
-function handleClick(event) {
-  event.preventDefault();
-
-  if (event.target === event.currentTarget) {
-      return gallery.next();
-  }
   
 
-  let gallery = new SimpleLightbox('.gallery__item a', { captionsData: "alt", captionDelay: 250, overlayOpacity: 0.5 });
-  gallery.on('show.simpleLightbox', function () {
+  const lightbox = new SimpleLightbox('.gallery__item a', { captionsData: "alt", captionDelay: 250, overlayOpacity: 0.5 });
+  lightbox.on('show.simpleLightbox', function () {
       `
       <img class="gallery__image" src="${original}"  alt="${description}" width="800" height="600"/>
       `
   });
-}
