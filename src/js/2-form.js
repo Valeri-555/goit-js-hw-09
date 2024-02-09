@@ -14,6 +14,10 @@ function onFormSubmit(e) {
   const email = form.elements.email.value.trim();
   const message = form.elements.message.value.trim();
 
+  if (!email || !message){
+    alert('Please fill in both email and message fields');
+    return;
+}
   const data = {
     email,
     message,
@@ -22,11 +26,6 @@ function onFormSubmit(e) {
 
   localStorage.removeItem(STORAGE_KEY);
   form.reset();
-
-   if (form.elements.email.value === '' || form.elements.message.value === ''){
-        console.log('Please fill in both email and message fields');
-        return;
-}
 };
 
 function onFormInput() {
