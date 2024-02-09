@@ -69,8 +69,6 @@ const images = [
   
   const galleryList = document.querySelector(".gallery");
 
-  // galleryList.style.display = "grid";
-
   galleryList.insertAdjacentHTML("beforeend", createMarkup(images));
   galleryList.addEventListener("click",  function(event) {
     event.preventDefault();
@@ -80,10 +78,10 @@ const images = [
 function createMarkup(arr) {
 
     return arr.map(({ preview, original, description }) =>
-       `<li class="gallery__item">
-   <a class="gallery__link" href="${original}">
+       `<li class="gallery-item">
+   <a class="gallery-link" href="${original}">
       <img
-      class="gallery__image"
+      class="gallery-image"
       src="${preview}" 
       data-source="${original}"
       alt="${description}" />
@@ -93,9 +91,9 @@ function createMarkup(arr) {
 };
   
 
-  const lightbox = new SimpleLightbox('.gallery__item a', { captionsData: "alt", captionDelay: 250, overlayOpacity: 0.5 });
+  const lightbox = new SimpleLightbox('.gallery-item a', { captionsData: "alt", captionDelay: 250 });
   lightbox.on('show.simpleLightbox', function () {
       `
-      <img class="gallery__image" src="${original}"  alt="${description}" width="800" height="600"/>
+      <img class="gallery-image" src="${original}"  alt="${description}" width="800" height="600"/>
       `
   });
