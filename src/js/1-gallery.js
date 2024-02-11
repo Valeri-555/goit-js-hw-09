@@ -1,3 +1,6 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const images = [
     {
       preview:
@@ -64,16 +67,13 @@ const images = [
     },
   ];
 
-  import SimpleLightbox from "simplelightbox";
-  import "simplelightbox/dist/simple-lightbox.min.css";
   
   const galleryList = document.querySelector(".gallery");
 
   galleryList.insertAdjacentHTML("beforeend", createMarkup(images));
-  galleryList.addEventListener("click",  function(event) {
-    event.preventDefault();
-  });
-
+  // galleryList.addEventListener("click", function(event) {
+  //   event.preventDefault();
+  // });
 
 function createMarkup(arr) {
 
@@ -90,10 +90,17 @@ function createMarkup(arr) {
     ).join("");
 };
   
+galleryList.innerHTML = markup;
 
-  const lightbox = new SimpleLightbox('.gallery-item a', { captionsData: "alt", captionDelay: 250 });
-  lightbox.on('show.simpleLightbox', function () {
-      `
-      <img class="gallery-image" src="${original}"  alt="${description}" width="800" height="600"/>
-      `
+  const lightbox = new SimpleLightbox('.gallery a',  { 
+    captionsData: "alt", 
+    captionDelay: 250, 
+    captions: true,
+    captionType: 'attr',  
+    captionPosition: 'bottom',
+    fadeSpeed: 150,
+    captionSelector: "img", 
   });
+
+  lightbox.on('show.simpleLightbox');
+ 
