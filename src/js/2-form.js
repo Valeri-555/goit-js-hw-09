@@ -44,16 +44,8 @@ function onFormInput() {
 function loadFromLS(key) {
   const storKey = localStorage.getItem(key);
   try {
-    return JSON.parse({});
+    return JSON.parse({storKey});
   } catch {
     return storKey;
   }
 };
- 
-// function filledForms() {
-//     if (form.elements.email.value === '' || form.elements.message.value === ''){
-//         console.log('Please fill in both email and message fields');
-//         return;
-// }
-// };
-// filledForms();
