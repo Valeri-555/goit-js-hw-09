@@ -90,7 +90,7 @@ function createMarkup(arr) {
     ).join("");
 };
   
-galleryList.innerHTML = markup;
+galleryList.innerHTML = createMarkup;
 
   const lightbox = new SimpleLightbox('.gallery a',  { 
     captionsData: "alt", 
