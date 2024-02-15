@@ -70,14 +70,13 @@ const images = [
   
   const galleryList = document.querySelector(".gallery");
 
-  galleryList.insertAdjacentHTML("beforeend", createMarkup(images));
+  
   // galleryList.addEventListener("click", function(event) {
   //   event.preventDefault();
   // });
 
 function createMarkup(arr) {
-
-    return arr.map(({ preview, original, description }) =>
+  return arr.map(({ preview, original, description }) => 
        `<li class="gallery-item">
    <a class="gallery-link" href="${original}">
       <img
@@ -87,10 +86,10 @@ function createMarkup(arr) {
       alt="${description}" />
    </a>
 </li>`
-    ).join("");
+  ).join('');
 };
-  
-galleryList.innerHTML = createMarkup;
+
+galleryList.insertAdjacentHTML("beforeend", createMarkup(images));
 
   const lightbox = new SimpleLightbox('.gallery a',  { 
     captionsData: "alt", 
