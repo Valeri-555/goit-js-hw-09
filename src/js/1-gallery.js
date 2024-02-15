@@ -71,9 +71,6 @@ const images = [
   const galleryList = document.querySelector(".gallery");
 
   
-  // galleryList.addEventListener("click", function(event) {
-  //   event.preventDefault();
-  // });
 
 function createMarkup(arr) {
   return arr.map(({ preview, original, description }) => 
