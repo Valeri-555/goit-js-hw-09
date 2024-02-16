@@ -53,3 +53,11 @@ function loadFromLS(key) {
     return storKey;
   }
 };
+   
+function init() {
+  const data = loadFromLS(STORAGE_KEY);
+  form.elements.email.value = data.email;
+  form.elements.message.value = data.message;
+};
+
+init();
