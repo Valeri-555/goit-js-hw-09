@@ -6,7 +6,7 @@ const form = document.querySelector('.feedback-form');
 const textarea = form.querySelector('textarea');
 
 form.addEventListener('input', onFormInput);
-form.addEventListener('submit', onFormSubmit);
+form.addEventListener('submit', onFormSubmit); 
 
 function onFormSubmit(e) {
   e.preventDefault();
@@ -37,14 +37,18 @@ function onFormInput() {
     message,
   };
 
+saveToLS(STORAGE_KEY, data)
+};
 
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+function saveToLS(key, value) {
+    const storKey = JSON.stringify(value);
+    localStorage.setItem(key, storKey);
 };
 
 function loadFromLS(key) {
   const storKey = localStorage.getItem(key);
   try {
-    return JSON.parse({storKey});
+    return JSON.parse(storKey);
   } catch {
     return storKey;
   }
