@@ -90,13 +90,5 @@ galleryList.insertAdjacentHTML("beforeend", createMarkup(images));
 
   const lightbox = new SimpleLightbox('.gallery a',  { 
     captionsData: "alt", 
-    captionDelay: 250, 
-    captions: true,
-    captionType: 'attr',  
-    captionPosition: 'bottom',
-    fadeSpeed: 150,
-    captionSelector: "img", 
+    captionDelay: 250 
   });
-
-  lightbox.on('show.simpleLightbox');
- 
